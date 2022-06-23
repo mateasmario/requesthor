@@ -1,0 +1,14 @@
+E:\git\requesthor\requesthor\bin\Release\requesthor.exe.config
+E:\git\requesthor\requesthor\bin\Release\requesthor.exe
+E:\git\requesthor\requesthor\bin\Release\requesthor.pdb
+E:\git\requesthor\requesthor\bin\Release\Newtonsoft.Json.dll
+E:\git\requesthor\requesthor\bin\Release\Newtonsoft.Json.xml
+E:\git\requesthor\requesthor\obj\Release\requesthor.csproj.AssemblyReference.cache
+E:\git\requesthor\requesthor\obj\Release\requesthor.csproj.SuggestedBindingRedirects.cache
+E:\git\requesthor\requesthor\obj\Release\requesthor.MainForm.resources
+E:\git\requesthor\requesthor\obj\Release\requesthor.Properties.Resources.resources
+E:\git\requesthor\requesthor\obj\Release\requesthor.csproj.GenerateResource.cache
+E:\git\requesthor\requesthor\obj\Release\requesthor.csproj.CoreCompileInputs.cache
+E:\git\requesthor\requesthor\obj\Release\requesthor.csproj.CopyComplete
+E:\git\requesthor\requesthor\obj\Release\requesthor.exe
+E:\git\requesthor\requesthor\obj\Release\requesthor.pdb
