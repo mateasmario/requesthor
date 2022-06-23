@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheArtOfDev.HtmlRenderer.WinForms;
 
 namespace requesthor
 {
@@ -46,12 +47,12 @@ namespace requesthor
             Application.EnableVisualStyles();
         }
 
-        public void HideTabControlHeader()
+        public void HideTabControlHeader(TabControl tabControl)
         {
-            tabControl1.Appearance = TabAppearance.Buttons;
-            tabControl1.ItemSize = new System.Drawing.Size(0, 1);
-            tabControl1.Multiline = true;
-            tabControl1.SizeMode = TabSizeMode.Fixed;
+            tabControl.Appearance = TabAppearance.Buttons;
+            tabControl.ItemSize = new System.Drawing.Size(0, 1);
+            tabControl.Multiline = true;
+            tabControl.SizeMode = TabSizeMode.Fixed;
         }
 
         public void InitializeTitleBar()
@@ -67,17 +68,22 @@ namespace requesthor
 
         public void InitializeTextBoxes()
         {
-            StatusCodePanel.Hide();
             URLTextBox.Font = new Font(Globals.privateFontCollection.Families[1], URLTextBox.Font.Size);
             URLTextBox.Select();
             ResponseRichTextBox.Font = new Font(Globals.privateFontCollection.Families[1], ResponseRichTextBox.Font.Size);
-            HeadersRichTextBox.Font = new Font(Globals.privateFontCollection.Families[1], ResponseRichTextBox.Font.Size);
+            HeadersRichTextBox.Font = new Font(Globals.privateFontCollection.Families[1], HeadersRichTextBox.Font.Size);
+            BodyRichTextBox.Font = new Font(Globals.privateFontCollection.Families[1], BodyRichTextBox.Font.Size);
+            AuthorizationRichTextBox.Font = new Font(Globals.privateFontCollection.Families[1], AuthorizationRichTextBox.Font.Size);
+
+            ResponseRichTextBox.Text = "You will see the request response here.";
         }
 
         public void SelectMenuItem(Panel senderPanel)
         {
             MenuItem1.BackColor = Color.FromArgb(33, 33, 33);
             MenuItem2.BackColor = Color.FromArgb(33, 33, 33);
+            MenuItem3.BackColor = Color.FromArgb(33, 33, 33);
+            MenuItem4.BackColor = Color.FromArgb(33, 33, 33);
 
             senderPanel.BackColor = Color.FromArgb(49, 126, 168);
         }
@@ -91,12 +97,14 @@ namespace requesthor
         private void Form1_Load(object sender, EventArgs e)
         {
             DesignFix();
-            HideTabControlHeader();
+            HideTabControlHeader(PagesTabControl);
 
             ResourceManagerService.InitializeFontCollection();
             InitializeTitleBar();
             InitializeMenuPanel();
             InitializeTextBoxes();
+
+            RequestMethodComboBox.SelectedIndex = 0;
 
             SelectMenuItem(MenuItem1);
         }
@@ -138,6 +146,8 @@ namespace requesthor
 
             if (sender is Label)
                 senderPanel = (Panel)((Label)sender).Parent;
+            else if (sender is PictureBox)
+                senderPanel = (Panel)((PictureBox)sender).Parent;
             else if (sender is Panel)
                 senderPanel = (Panel)sender;
 
@@ -147,7 +157,14 @@ namespace requesthor
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
-            Panel senderPanel = (Panel)sender;
+            Panel senderPanel = null;
+
+            if (sender is Label)
+                senderPanel = (Panel)((Label)sender).Parent;
+            else if (sender is PictureBox)
+                senderPanel = (Panel)((PictureBox)sender).Parent;
+            else if (sender is Panel)
+                senderPanel = (Panel)sender;
 
             if (senderPanel.BackColor != Color.FromArgb(49, 126, 168))
                 senderPanel.BackColor = Color.FromArgb(33, 33, 33);
@@ -159,6 +176,8 @@ namespace requesthor
 
             if (sender is Label)
                 senderPanel = (Panel)((Label)sender).Parent;
+            else if (sender is PictureBox)
+                senderPanel = (Panel)((PictureBox)sender).Parent;
             else if (sender is Panel)
                 senderPanel = (Panel)sender;
 
@@ -166,22 +185,30 @@ namespace requesthor
 
             // open tab page
             if (senderPanel == MenuItem1)
-                tabControl1.SelectTab(0);
+                PagesTabControl.SelectTab(0);
             else if (senderPanel == MenuItem2)
-                tabControl1.SelectTab(1);
+                PagesTabControl.SelectTab(1);
+            else if (senderPanel == MenuItem3)
+                PagesTabControl.SelectTab(2);
+            else if (senderPanel == MenuItem4)
+                PagesTabControl.SelectTab(3);
         }
 
         private void SendRequestButton_Click(object sender, EventArgs e)
         {
-            RequestService.SendRequest("GET", URLTextBox.Text, HeadersRichTextBox.Text, ResponseRichTextBox, StatusCodeLabel);
+            RequestService.SendRequest(RequestMethodComboBox.Text, URLTextBox.Text, HeadersRichTextBox.Text, BodyRichTextBox.Text, AuthorizationRichTextBox.Text, ResponseRichTextBox, StatusCodeLabel);
         }
 
         private void URLTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                RequestService.SendRequest("GET", URLTextBox.Text, HeadersRichTextBox.Text, ResponseRichTextBox, StatusCodeLabel);
+                RequestService.SendRequest(RequestMethodComboBox.Text, URLTextBox.Text, HeadersRichTextBox.Text, BodyRichTextBox.Text, AuthorizationRichTextBox.Text, ResponseRichTextBox, StatusCodeLabel);
             }
+        }
+        private void CreditsButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/mateasmario/requesthor");
         }
 
         #endregion Events

@@ -33,9 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>thor.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -61,6 +67,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FormatService.cs" />
     <Compile Include="Services\RequestService.cs" />
     <Compile Include="Services\ResourceManagerService.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -96,6 +103,15 @@
     <None Include="Resources\Minimize.png" />
     <None Include="Resources\Close1.png" />
     <None Include="Resources\Close.png" />
+    <None Include="Resources\email.png" />
+    <None Include="Resources\header.png" />
+    <None Include="Resources\header %281%29.png" />
+    <None Include="Resources\quill-drawing-a-line.png" />
+    <None Include="Resources\send.png" />
+    <None Include="Resources\header %281%291.png" />
+    <None Include="Resources\padlock.png" />
+    <Content Include="Icon.ico" />
+    <None Include="Resources\github %281%29.png" />
     <Content Include="thor.ico" />
   </ItemGroup>
   <ItemGroup />
