@@ -114,6 +114,7 @@
     <None Include="Resources\full-screen %281%29.png" />
     <None Include="Resources\Shrink.png" />
     <None Include="Resources\expand %281%29.png" />
+    <None Include="Resources\jsonlogo.png" />
     <Content Include="thor.ico" />
   </ItemGroup>
   <ItemGroup />

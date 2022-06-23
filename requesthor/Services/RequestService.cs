@@ -12,6 +12,14 @@ namespace requesthor.Services
 {
     internal class RequestService
     {
+        public static string ProcessURL(string url)
+        {
+            if (url.Length >= 7 && url.Substring(0, 7) == "http://"
+                || url.Length >= 8 && url.Substring(0, 8) == "https://")
+                return url;
+
+            else return "http://" + url;
+        }
         public static HttpClient CreateClientWithHeaders(string authorization, Dictionary<string, string> headers)
         {
             var client = new HttpClient();
@@ -29,6 +37,7 @@ namespace requesthor.Services
         public static void SendRequest(string method, string url, string headerString, string bodyString, string authorization, RichTextBox ResponseRichTextBox, Label StatusCodeLabel)
         {
             if (headerString == "") headerString = "{}";
+            url = ProcessURL(url);
 
             try
             {
@@ -51,21 +60,12 @@ namespace requesthor.Services
 
         public static async Task GetRequest(string url, string authorization, RichTextBox ResponseRichTextBox, Label StatusCodeLabel, Dictionary<string, string> headers)
         {
-            string response = "";
-
             var client = CreateClientWithHeaders(authorization, headers);
-
 
             try
             {
                 var result = await client.GetAsync(url);
-                string content = null;
-
-                using (var sr = new StreamReader(await result.Content.ReadAsStreamAsync(), Encoding.GetEncoding("iso-8859-1")))
-                    content = sr.ReadToEnd();
-
-                OutputResponse(result, content, StatusCodeLabel, ResponseRichTextBox);
-
+                OutputResponse(result, StatusCodeLabel, ResponseRichTextBox);
             }
             catch (Exception ex)
             {
@@ -75,33 +75,23 @@ namespace requesthor.Services
 
         public static async Task PostRequest(string url, String authorization, String bodyString, RichTextBox ResponseRichTextBox, Label StatusCodeLabel, Dictionary<string, string> headers)
         {
-            string response = "";
-
             var client = CreateClientWithHeaders(authorization, headers);
 
-                try
-                {
-                    string json = JsonConvert.SerializeObject(bodyString);
-                    var httpContent = new StringContent(bodyString, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(url, httpContent);
-                    string content = null;
-
-                    using (var sr = new StreamReader(await result.Content.ReadAsStreamAsync(), Encoding.GetEncoding("iso-8859-1")))
-                        content = sr.ReadToEnd();
-
-                    OutputResponse(result, content, StatusCodeLabel, ResponseRichTextBox);
-
-                }
-                catch (Exception ex)
-                {
-                    OutputException(ex, StatusCodeLabel, ResponseRichTextBox);
-                }
+            try
+            {
+                string json = JsonConvert.SerializeObject(bodyString);
+                var httpContent = new StringContent(bodyString, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, httpContent);
+                OutputResponse(result, StatusCodeLabel, ResponseRichTextBox);
+            }
+            catch (Exception ex)
+            {
+                OutputException(ex, StatusCodeLabel, ResponseRichTextBox);
+            }
         }
 
         public static async Task PutRequest(string url, String authorization, String bodyString, RichTextBox ResponseRichTextBox, Label StatusCodeLabel, Dictionary<string, string> headers)
         {
-            string response = "";
-
             var client = CreateClientWithHeaders(authorization, headers);
 
             try
@@ -109,13 +99,7 @@ namespace requesthor.Services
                 string json = JsonConvert.SerializeObject(bodyString);
                 var httpContent = new StringContent(bodyString, Encoding.UTF8, "application/json");
                 var result = await client.PutAsync(url, httpContent);
-                string content = null;
-
-                using (var sr = new StreamReader(await result.Content.ReadAsStreamAsync(), Encoding.GetEncoding("iso-8859-1")))
-                    content = sr.ReadToEnd();
-
-                OutputResponse(result, content, StatusCodeLabel, ResponseRichTextBox);
-
+                OutputResponse(result, StatusCodeLabel, ResponseRichTextBox);
             }
             catch (Exception ex)
             {
@@ -125,20 +109,12 @@ namespace requesthor.Services
 
         public static async Task DeleteRequest(string url, String authorization, RichTextBox ResponseRichTextBox, Label StatusCodeLabel, Dictionary<string, string> headers)
         {
-            string response = "";
-
             var client = CreateClientWithHeaders(authorization, headers);
 
             try
             {
                 var result = await client.DeleteAsync(url);
-                string content = null;
-
-                using (var sr = new StreamReader(await result.Content.ReadAsStreamAsync(), Encoding.GetEncoding("iso-8859-1")))
-                    content = sr.ReadToEnd();
-
-                OutputResponse(result, content, StatusCodeLabel, ResponseRichTextBox);
-
+                OutputResponse(result, StatusCodeLabel, ResponseRichTextBox);
             }
             catch (Exception ex)
             {
@@ -146,14 +122,24 @@ namespace requesthor.Services
             }
         }
 
-        public static void OutputResponse(HttpResponseMessage result, string content, Label StatusCodeLabel, RichTextBox ResponseRichTextBox)
+        public static async Task OutputResponse(HttpResponseMessage result, Label StatusCodeLabel, RichTextBox ResponseRichTextBox)
         {
+            string content;
+
+            if (result.StatusCode != System.Net.HttpStatusCode.NoContent)
+            {
+                using (var sr = new StreamReader(await result.Content.ReadAsStreamAsync(), Encoding.GetEncoding("iso-8859-1")))
+                    content = sr.ReadToEnd();
+            }
+            else content = "No content.";
+
             if (result.IsSuccessStatusCode)
                 StatusCodeLabel.Parent.BackColor = Color.MediumSeaGreen;
             else
                 StatusCodeLabel.Parent.BackColor = Color.Crimson;
 
             StatusCodeLabel.Text = "Response: " + ((double)result.StatusCode).ToString() + " " + result.StatusCode.ToString();
+            ResponseRichTextBox.Text = "";
 
             if (FormatService.GetFormat(content) == "HTML")
             {

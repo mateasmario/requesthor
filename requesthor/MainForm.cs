@@ -80,6 +80,25 @@ namespace requesthor
             senderPanel.BackColor = Color.FromArgb(49, 126, 168);
         }
 
+        public void Maximize()
+        {
+            if (Globals.maximized)
+            {
+                MaximizeButton.BackgroundImage = Properties.Resources.expand__1_;
+                Globals.maximized = false;
+
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                MaximizeButton.BackgroundImage = Properties.Resources.Shrink;
+                Globals.maximized = true;
+
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
         #endregion Design Helper Methods
 
         #endregion Helper Methods
@@ -120,6 +139,9 @@ namespace requesthor
         {
             if (Globals.mouseDown)
             {
+                if (Globals.maximized)
+                    Maximize();
+
                 this.Location = new Point(
                     (this.Location.X - Globals.lastLocation.X) + e.X, (this.Location.Y - Globals.lastLocation.Y) + e.Y);
 
@@ -212,21 +234,16 @@ namespace requesthor
 
         private void MaximizeButton_Click(object sender, EventArgs e)
         {
-            if (Globals.maximized)
-            {
-                MaximizeButton.BackgroundImage = Properties.Resources.expand__1_;
-                Globals.maximized = false;
+            Maximize();
+        }
 
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                MaximizeButton.BackgroundImage = Properties.Resources.Shrink;
-                Globals.maximized = true;
-
-                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-                this.WindowState = FormWindowState.Maximized;
-            }
+        private void TitleBarPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Maximize();
+        }
+        private void TitleBarLabel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Maximize();
         }
 
         #endregion Events

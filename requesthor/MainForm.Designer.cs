@@ -55,6 +55,10 @@
             this.BodyRichTextBox = new System.Windows.Forms.RichTextBox();
             this.AuthorizationTabPage = new System.Windows.Forms.TabPage();
             this.AuthorizationRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.CreditsButton = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -63,6 +67,7 @@
             this.MaximizeButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.TitleBarCloseButton = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.TitleBarPanel.SuspendLayout();
             this.MenuPanel.SuspendLayout();
             this.MenuItem4.SuspendLayout();
@@ -75,10 +80,12 @@
             this.HeadersTabPage.SuspendLayout();
             this.BodyTabPage.SuspendLayout();
             this.AuthorizationTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleBarPanel
@@ -93,6 +100,7 @@
             this.TitleBarPanel.Name = "TitleBarPanel";
             this.TitleBarPanel.Size = new System.Drawing.Size(920, 36);
             this.TitleBarPanel.TabIndex = 0;
+            this.TitleBarPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseDoubleClick);
             this.TitleBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseDown);
             this.TitleBarPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseMove);
             this.TitleBarPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseUp);
@@ -109,6 +117,7 @@
             this.TitleBarLabel.TabIndex = 1;
             this.TitleBarLabel.Text = "requesthor";
             this.TitleBarLabel.UseCompatibleTextRendering = true;
+            this.TitleBarLabel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TitleBarLabel_MouseDoubleClick);
             this.TitleBarLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseDown);
             this.TitleBarLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseMove);
             this.TitleBarLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TitleBarPanel_MouseUp);
@@ -190,7 +199,7 @@
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(123, 26);
             this.VersionLabel.TabIndex = 3;
-            this.VersionLabel.Text = "Alpha 1.20 / 23.06.2022\r\nby Mateaș Mario";
+            this.VersionLabel.Text = "Alpha 1.21 / 23.06.2022\r\nby Mateaș Mario";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MenuItem2
@@ -292,6 +301,9 @@
             // ResponseRichTextBox
             // 
             this.ResponseRichTextBox.AcceptsTab = true;
+            this.ResponseRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ResponseRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ResponseRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
             this.ResponseRichTextBox.DetectUrls = false;
@@ -357,6 +369,8 @@
             // 
             // HeadersTabPage
             // 
+            this.HeadersTabPage.Controls.Add(this.pictureBox5);
+            this.HeadersTabPage.Controls.Add(this.label1);
             this.HeadersTabPage.Controls.Add(this.HeadersRichTextBox);
             this.HeadersTabPage.Location = new System.Drawing.Point(4, 22);
             this.HeadersTabPage.Name = "HeadersTabPage";
@@ -368,17 +382,21 @@
             // HeadersRichTextBox
             // 
             this.HeadersRichTextBox.AcceptsTab = true;
+            this.HeadersRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HeadersRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.HeadersRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.HeadersRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HeadersRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.HeadersRichTextBox.Location = new System.Drawing.Point(0, 43);
             this.HeadersRichTextBox.Name = "HeadersRichTextBox";
-            this.HeadersRichTextBox.Size = new System.Drawing.Size(723, 542);
+            this.HeadersRichTextBox.Size = new System.Drawing.Size(723, 502);
             this.HeadersRichTextBox.TabIndex = 3;
             this.HeadersRichTextBox.Text = "{\n    \"User-Agent\": \"requesthor\",\n    \"Accept\": \"application/json\"\n}";
             // 
             // BodyTabPage
             // 
+            this.BodyTabPage.Controls.Add(this.pictureBox6);
+            this.BodyTabPage.Controls.Add(this.label2);
             this.BodyTabPage.Controls.Add(this.BodyRichTextBox);
             this.BodyTabPage.Location = new System.Drawing.Point(4, 22);
             this.BodyTabPage.Name = "BodyTabPage";
@@ -390,17 +408,20 @@
             // BodyRichTextBox
             // 
             this.BodyRichTextBox.AcceptsTab = true;
+            this.BodyRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BodyRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BodyRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.BodyRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BodyRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.BodyRichTextBox.Location = new System.Drawing.Point(0, 42);
             this.BodyRichTextBox.Name = "BodyRichTextBox";
-            this.BodyRichTextBox.Size = new System.Drawing.Size(723, 542);
+            this.BodyRichTextBox.Size = new System.Drawing.Size(723, 502);
             this.BodyRichTextBox.TabIndex = 5;
             this.BodyRichTextBox.Text = "{}";
             // 
             // AuthorizationTabPage
             // 
+            this.AuthorizationTabPage.Controls.Add(this.label3);
             this.AuthorizationTabPage.Controls.Add(this.AuthorizationRichTextBox);
             this.AuthorizationTabPage.Location = new System.Drawing.Point(4, 22);
             this.AuthorizationTabPage.Name = "AuthorizationTabPage";
@@ -412,14 +433,56 @@
             // AuthorizationRichTextBox
             // 
             this.AuthorizationRichTextBox.AcceptsTab = true;
+            this.AuthorizationRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AuthorizationRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AuthorizationRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.AuthorizationRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuthorizationRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.AuthorizationRichTextBox.Location = new System.Drawing.Point(0, 43);
             this.AuthorizationRichTextBox.Name = "AuthorizationRichTextBox";
-            this.AuthorizationRichTextBox.Size = new System.Drawing.Size(723, 542);
+            this.AuthorizationRichTextBox.Size = new System.Drawing.Size(723, 502);
             this.AuthorizationRichTextBox.TabIndex = 6;
             this.AuthorizationRichTextBox.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(-2, -2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 37);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Headers";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(-2, -2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 37);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Body";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(-2, -2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(178, 37);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Authorization";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::requesthor.Properties.Resources.jsonlogo;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Location = new System.Drawing.Point(101, 10);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(40, 13);
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
             // 
             // CreditsButton
             // 
@@ -545,6 +608,16 @@
             this.TitleBarCloseButton.UseVisualStyleBackColor = true;
             this.TitleBarCloseButton.Click += new System.EventHandler(this.TitleBarCloseButton_Click);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::requesthor.Properties.Resources.jsonlogo;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Location = new System.Drawing.Point(65, 10);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(40, 13);
+            this.pictureBox6.TabIndex = 7;
+            this.pictureBox6.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -577,12 +650,17 @@
             this.StatusCodePanel.ResumeLayout(false);
             this.StatusCodePanel.PerformLayout();
             this.HeadersTabPage.ResumeLayout(false);
+            this.HeadersTabPage.PerformLayout();
             this.BodyTabPage.ResumeLayout(false);
+            this.BodyTabPage.PerformLayout();
             this.AuthorizationTabPage.ResumeLayout(false);
+            this.AuthorizationTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -623,6 +701,11 @@
         private System.Windows.Forms.RichTextBox HeadersRichTextBox;
         private System.Windows.Forms.Button CreditsButton;
         private System.Windows.Forms.Button MaximizeButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
 
