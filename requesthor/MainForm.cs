@@ -203,6 +203,32 @@ namespace requesthor
             System.Diagnostics.Process.Start("https://github.com/mateasmario/requesthor");
         }
 
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            this.Refresh();
+            TitleBarPanel.Refresh();
+            MenuPanel.Refresh();
+        }
+
+        private void MaximizeButton_Click(object sender, EventArgs e)
+        {
+            if (Globals.maximized)
+            {
+                MaximizeButton.BackgroundImage = Properties.Resources.expand__1_;
+                Globals.maximized = false;
+
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                MaximizeButton.BackgroundImage = Properties.Resources.Shrink;
+                Globals.maximized = true;
+
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
         #endregion Events
     }
 }

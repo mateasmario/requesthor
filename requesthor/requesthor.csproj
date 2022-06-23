@@ -106,6 +106,14 @@
     <None Include="Resources\padlock.png" />
     <Content Include="Icon.ico" />
     <None Include="Resources\github %281%29.png" />
+    <None Include="Resources\maximize.png" />
+    <None Include="Resources\maximize %281%29.png" />
+    <None Include="Resources\maximize %282%29.png" />
+    <None Include="Resources\stop %281%29.png" />
+    <None Include="Resources\full-screen.png" />
+    <None Include="Resources\full-screen %281%29.png" />
+    <None Include="Resources\Shrink.png" />
+    <None Include="Resources\expand %281%29.png" />
     <Content Include="thor.ico" />
   </ItemGroup>
   <ItemGroup />

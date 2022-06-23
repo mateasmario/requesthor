@@ -50,16 +50,17 @@
             this.SendRequestButton = new System.Windows.Forms.Button();
             this.URLTextBox = new System.Windows.Forms.TextBox();
             this.HeadersTabPage = new System.Windows.Forms.TabPage();
+            this.HeadersRichTextBox = new System.Windows.Forms.RichTextBox();
             this.BodyTabPage = new System.Windows.Forms.TabPage();
             this.BodyRichTextBox = new System.Windows.Forms.RichTextBox();
             this.AuthorizationTabPage = new System.Windows.Forms.TabPage();
             this.AuthorizationRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.HeadersRichTextBox = new System.Windows.Forms.RichTextBox();
             this.CreditsButton = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MaximizeButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.TitleBarCloseButton = new System.Windows.Forms.Button();
             this.TitleBarPanel.SuspendLayout();
@@ -83,6 +84,7 @@
             // TitleBarPanel
             // 
             this.TitleBarPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TitleBarPanel.Controls.Add(this.MaximizeButton);
             this.TitleBarPanel.Controls.Add(this.button1);
             this.TitleBarPanel.Controls.Add(this.TitleBarCloseButton);
             this.TitleBarPanel.Controls.Add(this.TitleBarLabel);
@@ -180,6 +182,7 @@
             // 
             // VersionLabel
             // 
+            this.VersionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
             this.VersionLabel.ForeColor = System.Drawing.Color.White;
@@ -187,7 +190,7 @@
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(123, 26);
             this.VersionLabel.TabIndex = 3;
-            this.VersionLabel.Text = "Alpha 1.01 / 22.06.2022\r\nby Mateaș Mario";
+            this.VersionLabel.Text = "Alpha 1.20 / 23.06.2022\r\nby Mateaș Mario";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MenuItem2
@@ -271,6 +274,7 @@
             // 
             // RequestMethodComboBox
             // 
+            this.RequestMethodComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RequestMethodComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.RequestMethodComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -323,8 +327,7 @@
             // 
             // SendRequestButton
             // 
-            this.SendRequestButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendRequestButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SendRequestButton.BackColor = System.Drawing.Color.SteelBlue;
             this.SendRequestButton.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue;
             this.SendRequestButton.FlatAppearance.BorderSize = 0;
@@ -361,6 +364,18 @@
             this.HeadersTabPage.TabIndex = 1;
             this.HeadersTabPage.Text = "HeadersTabPage";
             this.HeadersTabPage.UseVisualStyleBackColor = true;
+            // 
+            // HeadersRichTextBox
+            // 
+            this.HeadersRichTextBox.AcceptsTab = true;
+            this.HeadersRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HeadersRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.HeadersRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HeadersRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.HeadersRichTextBox.Name = "HeadersRichTextBox";
+            this.HeadersRichTextBox.Size = new System.Drawing.Size(723, 542);
+            this.HeadersRichTextBox.TabIndex = 3;
+            this.HeadersRichTextBox.Text = "{\n    \"User-Agent\": \"requesthor\",\n    \"Accept\": \"application/json\"\n}";
             // 
             // BodyTabPage
             // 
@@ -406,20 +421,9 @@
             this.AuthorizationRichTextBox.TabIndex = 6;
             this.AuthorizationRichTextBox.Text = "";
             // 
-            // HeadersRichTextBox
-            // 
-            this.HeadersRichTextBox.AcceptsTab = true;
-            this.HeadersRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HeadersRichTextBox.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.HeadersRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HeadersRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.HeadersRichTextBox.Name = "HeadersRichTextBox";
-            this.HeadersRichTextBox.Size = new System.Drawing.Size(723, 542);
-            this.HeadersRichTextBox.TabIndex = 3;
-            this.HeadersRichTextBox.Text = "{\n    \"User-Agent\": \"requesthor\",\n    \"Accept\": \"application/json\"\n}";
-            // 
             // CreditsButton
             // 
+            this.CreditsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CreditsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CreditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreditsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -490,6 +494,23 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
+            // MaximizeButton
+            // 
+            this.MaximizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaximizeButton.BackgroundImage = global::requesthor.Properties.Resources.expand__1_;
+            this.MaximizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaximizeButton.FlatAppearance.BorderSize = 0;
+            this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MaximizeButton.ForeColor = System.Drawing.Color.White;
+            this.MaximizeButton.Location = new System.Drawing.Point(861, 9);
+            this.MaximizeButton.Name = "MaximizeButton";
+            this.MaximizeButton.Size = new System.Drawing.Size(20, 20);
+            this.MaximizeButton.TabIndex = 4;
+            this.MaximizeButton.UseVisualStyleBackColor = true;
+            this.MaximizeButton.Click += new System.EventHandler(this.MaximizeButton_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -500,7 +521,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(863, 9);
+            this.button1.Location = new System.Drawing.Point(830, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(20, 20);
             this.button1.TabIndex = 3;
@@ -537,6 +558,7 @@
             this.Name = "MainForm";
             this.Text = "Requesthor";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.TitleBarPanel.ResumeLayout(false);
             this.TitleBarPanel.PerformLayout();
             this.MenuPanel.ResumeLayout(false);
@@ -600,6 +622,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.RichTextBox HeadersRichTextBox;
         private System.Windows.Forms.Button CreditsButton;
+        private System.Windows.Forms.Button MaximizeButton;
     }
 }
 

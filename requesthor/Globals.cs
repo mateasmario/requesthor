@@ -13,5 +13,6 @@ namespace requesthor
         public static PrivateFontCollection privateFontCollection;
         public static bool mouseDown;
         public static Point lastLocation;
+        public static bool maximized = false;
     }
 }

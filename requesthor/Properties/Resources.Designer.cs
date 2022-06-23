@@ -93,6 +93,26 @@ namespace requesthor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap expand__1_ {
+            get {
+                object obj = ResourceManager.GetObject("expand (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap full_screen__1_ {
+            get {
+                object obj = ResourceManager.GetObject("full-screen (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap github__1_ {
             get {
                 object obj = ResourceManager.GetObject("github (1)", resourceCulture);
@@ -146,6 +166,16 @@ namespace requesthor.Properties {
         internal static System.Drawing.Bitmap send {
             get {
                 object obj = ResourceManager.GetObject("send", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Shrink {
+            get {
+                object obj = ResourceManager.GetObject("Shrink", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
